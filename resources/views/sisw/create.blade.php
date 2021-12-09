@@ -29,19 +29,19 @@
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>NIM:</strong>
+                <strong>NIM</strong>
                 <input type="text" name="NIS" class="form-control" placeholder="Masukkan NIM">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Nama:</strong>
+                <strong>Nama</strong>
                 <input type="text" name="NamaSiswa" class="form-control" placeholder="Masukkan Nama">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Alamat:</strong>
+                <strong>Alamat</strong>
                 <textarea class="form-control" style="height:150px" name="Alamat" placeholder="Tempat tinggal"></textarea>
             </div>
         </div>
@@ -50,6 +50,7 @@
             <input class="form-control" type="file" id="media" name="media">
           </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
     </div>

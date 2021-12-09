@@ -38,8 +38,10 @@ class SiswaControllers extends Controller
      */
     public function store(Request $request)
     {
-        //
-        
+        /*fungsi ini berisi data yang dapat dimasukkan melalui form di menu create
+        Untuk media digunakan untuk menampung img atau gambar maksimal 5mb
+        */
+
         $validatedData = $request->validate([
             'NIS' => 'required|max:255',
             'NamaSiswa' => 'required|max:255',
@@ -75,6 +77,7 @@ class SiswaControllers extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Siswa $sisw)
     {
         return view('sisw.edit', compact('sisw'));
@@ -82,7 +85,7 @@ class SiswaControllers extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * Update data dengan cara menerimanya melalui request kemudian melakukan fungsi update
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -90,12 +93,20 @@ class SiswaControllers extends Controller
     public function update(Request $request, Siswa $sisw)
     {
         $request->validate([
-            'NIS' => 'required',
-            'NamaSiswa' => 'required',
-            'Alamat' => 'required',
+            'NIS' => 'required|max:255',
+            'NamaSiswa' => 'required|max:255',
+            'Alamat' => 'required|max:255',
+            'media' => 'file|image|max:5000',
         ]);
 
-        $sisw->update($request->all());
+        $request->media=$request->file('media')->store('media');
+        
+        $sisw->NIS = $request->NIS;
+        $sisw->NamaSiswa = $request->NamaSiswa;
+        $sisw->Alamat = $request->Alamat;
+        $sisw->media = $request->media;
+
+        $sisw->update();
 
         return redirect()->route('sisw.index')->with('succes','Siswa Berhasil di Update');
     }
